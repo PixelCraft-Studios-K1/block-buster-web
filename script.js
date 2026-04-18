@@ -370,7 +370,7 @@ function activatePowerUp(type) {
     
     switch(type) {
         case 'multiBall':
-            if (gameState.balls.length < 3) {
+            if (gameState.balls.length < 4) {
                 // gameState.balls.forEach(ball => {
                 //     gameState.balls.push({...ball});
                 // });

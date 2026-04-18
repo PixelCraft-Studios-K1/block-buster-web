@@ -25,7 +25,7 @@ jobs:
       - name: Lint Code Base
         uses: super-linter/super-linter@v5
         env:
-          VALIDATE_ALL_CODEBASE: false # Only check changed files
+          VALIDATE_ALL_CODEBASE: true # Only check changed files
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # We can specifically turn on what we want to demo:

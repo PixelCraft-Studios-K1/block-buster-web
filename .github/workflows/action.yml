@@ -1,0 +1,34 @@
+name: Code Quality Check
+
+# Topic 2: Event Types (Where you can use Actions)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Manual trigger for demo purposes
+
+jobs:
+  lint:
+    name: Run Super-Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Standard Checkout
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Super-Linter needs full history for better checks
+
+      # Topic 3: Finding Existing Actions (The Marketplace)
+      # I found "super-linter" by searching the GitHub Marketplace for 'Lint'
+      - name: Lint Code Base
+        uses: super-linter/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: false # Only check changed files
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # We can specifically turn on what we want to demo:
+          VALIDATE_HTML: true
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_CSS: true
